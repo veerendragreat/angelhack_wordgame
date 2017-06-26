@@ -58,16 +58,7 @@ public class AddWordsActivity extends AppCompatActivity {
         word1.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    EditText meaning1 = (EditText) findViewById(R.id.Meaning1);
-                    new ExecuteTask(meaning1).execute(word1.getText().toString());
-                    // Perform action on key press
-                    Toast t = Toast.makeText(AddWordsActivity.this, "Word added successfully !", Toast.LENGTH_SHORT);
-                    t.show();
-
-                }
+                launchAynchThreadOnEnterEvent(keyCode, event, word1, R.id.Meaning1);
                 return false;
             }
         });
@@ -76,16 +67,7 @@ public class AddWordsActivity extends AppCompatActivity {
         word2.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    EditText meaning = (EditText) findViewById(R.id.Meaning2);
-                    new ExecuteTask(meaning).execute(word2.getText().toString());
-                    // Perform action on key press
-                    Toast t = Toast.makeText(AddWordsActivity.this, "Word added successfully !", Toast.LENGTH_SHORT);
-                    t.show();
-
-                }
+                launchAynchThreadOnEnterEvent(keyCode, event, word2, R.id.Meaning2);
                 return false;
             }
         });
@@ -94,15 +76,7 @@ public class AddWordsActivity extends AppCompatActivity {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    EditText meaning = (EditText) findViewById(R.id.Meaning3);
-                    new ExecuteTask(meaning).execute(word3.getText().toString());
-                    // Perform action on key press
-                    Toast t = Toast.makeText(AddWordsActivity.this, "Word added successfully !", Toast.LENGTH_SHORT);
-                    t.show();
-
-                }
+                launchAynchThreadOnEnterEvent(keyCode, event, word3, R.id.Meaning3);
                 return false;
             }
         });
@@ -110,16 +84,7 @@ public class AddWordsActivity extends AppCompatActivity {
         word4.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    EditText meaning = (EditText) findViewById(R.id.Meaning4);
-                    new ExecuteTask(meaning).execute(word4.getText().toString());
-                    // Perform action on key press
-                    Toast t = Toast.makeText(AddWordsActivity.this, "Word added successfully !", Toast.LENGTH_SHORT);
-                    t.show();
-
-                }
+                launchAynchThreadOnEnterEvent(keyCode, event, word4, R.id.Meaning4);
                 return false;
             }
         });
@@ -127,19 +92,24 @@ public class AddWordsActivity extends AppCompatActivity {
         word5.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    EditText meaning = (EditText) findViewById(R.id.Meaning5);
-                    new ExecuteTask(meaning).execute(word5.getText().toString());
-                    // Perform action on key press
-                    Toast t = Toast.makeText(AddWordsActivity.this, "Word added successfully !", Toast.LENGTH_SHORT);
-                    t.show();
-
-                }
+                launchAynchThreadOnEnterEvent(keyCode, event, word5, R.id.Meaning5);
                 return false;
             }
         });
+
+    }
+
+    private void launchAynchThreadOnEnterEvent(int keyCode, KeyEvent event, EditText word, int meaningId) {
+        // If the event is a key-down event on the "enter" button
+        if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+            EditText meaning = (EditText) findViewById(meaningId);
+            new ExecuteTask(meaning, false).execute(word.getText().toString());
+            // Perform action on key press
+            Toast t = Toast.makeText(AddWordsActivity.this, "Word added successfully !", Toast.LENGTH_SHORT);
+            t.show();
+
+
+        }
 
     }
 
@@ -192,9 +162,11 @@ public class AddWordsActivity extends AppCompatActivity {
 
     class ExecuteTask extends AsyncTask<String, Integer, String> {
         EditText etView;
+        boolean isRequiredSave = false;
 
-        public ExecuteTask(EditText word) {
+        public ExecuteTask(EditText word, boolean isRequiredSave) {
             this.etView = word;
+            this.isRequiredSave = isRequiredSave;
         }
 
         @Override
@@ -209,7 +181,7 @@ public class AddWordsActivity extends AppCompatActivity {
 
             try {
                 Gson map = new Gson();
-                if(res != null || res!="") {
+                if (res != null || res != "") {
                     Entry_list data = map.fromJson(res, Entry_list.class);
                     List<Results> resultsList = data.getResults();
                     List<LexicalEntries> lexicalEntriesList = resultsList.get(0).getLexicalEntries();
@@ -224,17 +196,18 @@ public class AddWordsActivity extends AppCompatActivity {
                         }
                     }
                     res = definitionsList.get(0);
-
-                    DaoOperations daoOperations = new DaoOperations(getApplicationContext());
-                    daoOperations.open();
-                    Words objWord1 = new Words(params[0], res);
-                    daoOperations.addWords(objWord1);
-                    daoOperations.close();
-                }else{
-                    Log.e("error","null");
+                    if (isRequiredSave) {
+                        DaoOperations daoOperations = new DaoOperations(getApplicationContext());
+                        daoOperations.open();
+                        Words objWord1 = new Words(params[0], res);
+                        daoOperations.addWords(objWord1);
+                        daoOperations.close();
+                    }
+                } else {
+                    Log.e("error", "null");
                 }
             } catch (Exception e) {
-                Log.e("error",e.getMessage());
+                Log.e("error", e.getMessage());
             }
             return res;
         }
@@ -269,7 +242,7 @@ public class AddWordsActivity extends AppCompatActivity {
 
             s = sb.toString();
         } catch (Exception e) {
-            Log.d("Exception",e.getMessage());
+            Log.d("Exception", e.getMessage());
         }
         return s;
     }
