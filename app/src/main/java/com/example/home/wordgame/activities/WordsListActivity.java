@@ -51,7 +51,7 @@ public class WordsListActivity extends AppCompatActivity implements WordsListFra
     @Override
     public void onListFragmentInteraction(Words item) {
         Log.d("Android : ", item.getWord());
-
+        t1.setSpeechRate(0.8f);
         t1.speak("Word is " + item.getWord() + " And Meaning is " + item.getMeaning(), TextToSpeech.QUEUE_FLUSH, null);
     }
 }

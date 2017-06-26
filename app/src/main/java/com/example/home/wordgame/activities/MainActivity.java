@@ -42,7 +42,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        Button btPlayGame = (Button) findViewById(R.id.button_play_word_game);
+
+        Button btShowWordsList = (Button) findViewById(R.id.button_show_word_list);
+        btShowWordsList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Opening word game list screen...", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                //showFragment(new WordsListFragment(), R.id.container);
+                Intent myIntent = new Intent(MainActivity.this, WordsListActivity.class);
+                MainActivity.this.startActivity(myIntent);
+
+
+            }
+        });
+       /** Button btPlayGame = (Button) findViewById(R.id.button_play_word_game);
         btPlayGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,10 +67,8 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(myIntent);
 
 
-
             }
-        });
-
+        });**/
         /**
          * //Added this logic in content_main.xml means included in activity_main.xml
          *

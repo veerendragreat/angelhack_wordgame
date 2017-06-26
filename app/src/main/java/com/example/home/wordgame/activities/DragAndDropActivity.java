@@ -17,36 +17,60 @@ import android.widget.Toast;
 
 
 import com.example.home.wordgame.R;
+import com.example.home.wordgame.dtos.Words;
+import com.example.home.wordgame.repository.DaoOperations;
+
+import java.util.List;
 
 public class DragAndDropActivity extends AppCompatActivity {
+    private static int startIndex = 1;
+    private static int endIndex = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drag_and_drop);
 
-        Button btWord1 = (Button) findViewById(R.id.word_bt1);
-        btWord1.setTag("btWord1");
-        btWord1.setOnLongClickListener(new MyClickListener());
-        Button btWord2 = (Button) findViewById(R.id.word_bt2);
-        btWord2.setTag("btWord2");
-        btWord2.setOnLongClickListener(new MyClickListener());
-        Button btWord3 = (Button) findViewById(R.id.word_bt3);
-        btWord1.setTag("btWord3");
-        btWord1.setOnLongClickListener(new MyClickListener());
-        Button btWord4 = (Button) findViewById(R.id.word_bt4);
-        btWord1.setTag("btWord4");
-        btWord1.setOnLongClickListener(new MyClickListener());
-        Button btWord5 = (Button) findViewById(R.id.word_bt5);
-        btWord5.setTag("btWord5");
-        btWord5.setOnLongClickListener(new MyClickListener());
-        findViewById(R.id.meaning_tv1).setOnDragListener(new MyDragListener());
-        findViewById(R.id.meaning_tv2).setOnDragListener(new MyDragListener());
-        findViewById(R.id.meaning_tv3).setOnDragListener(new MyDragListener());
-        findViewById(R.id.meaning_tv4).setOnDragListener(new MyDragListener());
-        findViewById(R.id.meaning_tv5).setOnDragListener(new MyDragListener());
+        DaoOperations daoOperations = new DaoOperations(DragAndDropActivity.this);
+        daoOperations.open();
+        int swap = endIndex;
+        startIndex = endIndex;
+        endIndex = swap + 5;
 
+        List<Words> allwords = daoOperations.getAllwords(false, startIndex, endIndex);
+        daoOperations.close();
 
+        if (!allwords.isEmpty()) {
+            int nSize = allwords.size();
+            if (nSize <= 1) {
+                Words word1=allwords.get(0);
+                Button btWord1 = (Button) findViewById(R.id.word_bt1);
+                btWord1.setTag("btWord1");
+                btWord1.setText(word1.getWord());
+                btWord1.setOnLongClickListener(new MyClickListener());
+            }
+            if (nSize <= 1) {
+                Words word1 = allwords.get(0);
+            Button btWord2 = (Button) findViewById(R.id.word_bt2);
+                btWord2.setTag("btWord2");
+                btWord2.setText(word1.getWord());
+                btWord2.setOnLongClickListener(new MyClickListener());
+            }
+            Button btWord3 = (Button) findViewById(R.id.word_bt3);
+            btWord3.setTag("btWord3");
+            btWord3.setOnLongClickListener(new MyClickListener());
+            Button btWord4 = (Button) findViewById(R.id.word_bt4);
+            btWord4.setTag("btWord4");
+            btWord4.setOnLongClickListener(new MyClickListener());
+            Button btWord5 = (Button) findViewById(R.id.word_bt5);
+            btWord5.setTag("btWord5");
+            btWord5.setOnLongClickListener(new MyClickListener());
+            findViewById(R.id.meaning_tv1).setOnDragListener(new MyDragListener());
+            findViewById(R.id.meaning_tv2).setOnDragListener(new MyDragListener());
+            findViewById(R.id.meaning_tv3).setOnDragListener(new MyDragListener());
+            findViewById(R.id.meaning_tv4).setOnDragListener(new MyDragListener());
+            findViewById(R.id.meaning_tv5).setOnDragListener(new MyDragListener());
+        }
     }
 
 
