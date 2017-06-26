@@ -13,7 +13,7 @@ public class DatabaseHandler  extends SQLiteOpenHelper{
 
 
         private static final String DATABASE_NAME = "wordgame.db";
-        private static final int DATABASE_VERSION = 3;
+        private static final int DATABASE_VERSION = 5;
 
         public static final String TABLE_WORDS = "Words";
         public static final String COLUMN_ID = "id";

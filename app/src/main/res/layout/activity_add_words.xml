@@ -38,7 +38,7 @@
 
         <EditText
             android:id="@+id/Word1"
-            android:layout_width="190dp"
+            android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:columnCount="1"
             android:ems="10"
@@ -51,7 +51,7 @@
 
         <EditText
             android:id="@+id/Meaning1"
-            android:layout_width="185dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:columnCount="1"
             android:ems="10"
@@ -62,7 +62,7 @@
 
         <EditText
             android:id="@+id/Word2"
-            android:layout_width="190dp"
+            android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:columnCount="1"
             android:ems="10"
@@ -75,7 +75,7 @@
 
         <EditText
             android:id="@+id/Meaning2"
-            android:layout_width="185dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:columnCount="1"
             android:ems="10"
@@ -86,7 +86,7 @@
 
         <EditText
             android:id="@+id/Word3"
-            android:layout_width="190dp"
+            android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:columnCount="1"
             android:ems="10"
@@ -99,7 +99,7 @@
 
         <EditText
             android:id="@+id/Meaning3"
-            android:layout_width="185dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:columnCount="1"
             android:ems="10"
@@ -110,7 +110,7 @@
 
         <EditText
             android:id="@+id/Word4"
-            android:layout_width="190dp"
+            android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:columnCount="1"
             android:ems="10"
@@ -123,7 +123,7 @@
 
         <EditText
             android:id="@+id/Meaning4"
-            android:layout_width="185dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:columnCount="1"
             android:ems="10"
@@ -134,7 +134,7 @@
 
         <EditText
             android:id="@+id/Word5"
-            android:layout_width="190dp"
+            android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:columnCount="1"
             android:ems="10"
@@ -147,7 +147,7 @@
 
         <EditText
             android:id="@+id/Meaning5"
-            android:layout_width="185dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:columnCount="1"
             android:ems="10"

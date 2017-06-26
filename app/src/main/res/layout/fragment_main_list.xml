@@ -19,6 +19,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
         android:fontFamily="sans-serif"
         android:gravity="clip_horizontal"
         android:paddingBottom="@dimen/header_bottom_margin"
@@ -29,35 +30,47 @@
         android:textSize="@dimen/text_size"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/button_add_words"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_words"
-        android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="55dp" />
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="55dp"
+        android:text="@string/add_words" />
 
     <Button
         android:id="@+id/button_play_word_game"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/play_word_game"
-        android:layout_marginTop="32dp"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/button_show_word_list"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="32dp"
+        android:text="@string/play_word_game" />
 
     <Button
         android:id="@+id/button_show_word_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/show_words_list"
-        android:layout_below="@+id/button_add_words"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
+        android:layout_below="@+id/button_add_words"
+        android:layout_marginTop="30dp"
+        android:text="@string/show_words_list" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/button_play_word_game"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textAllCaps="true"
+        android:textColor="@android:color/background_dark"
+        android:textColorLink="@android:color/holo_orange_dark"
+        android:textStyle="bold|italic"
+        tools:text="Developed by : \n  \n              Veerendra And Sainath" />
 
     <!-- <Button
         android:id="@+id/button_view_employees"
