@@ -37,7 +37,6 @@
                 android:columnCount="1"
                 android:ems="10"
                 android:gravity="fill"
-                android:hint="@string/enter_word"
                 android:rowCount="1" />
 
             <Button
@@ -49,7 +48,6 @@
                 android:columnCount="1"
                 android:ems="10"
                 android:gravity="fill"
-                android:hint="@string/enter_word"
                 android:rowCount="1" />
 
             <Button
@@ -61,7 +59,6 @@
                 android:columnCount="1"
                 android:ems="10"
                 android:gravity="fill"
-                android:hint="@string/enter_word"
                 android:rowCount="1" />
 
             <Button
@@ -73,7 +70,6 @@
                 android:columnCount="1"
                 android:ems="10"
                 android:gravity="fill"
-                android:hint="@string/enter_word"
                 android:rowCount="1" />
 
             <Button
@@ -85,7 +81,6 @@
                 android:columnCount="1"
                 android:ems="10"
                 android:gravity="fill"
-                android:hint="@string/enter_word"
                 android:rowCount="1" />
 
         </GridLayout>
@@ -109,32 +104,27 @@
                 android:id="@+id/meaning_tv1"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="Drag the image and drop it here..."
                 tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/meaning_tv2"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="Drag the image and drop it here..."
                 tools:ignore="HardcodedText" />
             <TextView
                 android:id="@+id/meaning_tv3"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="Drag the image and drop it here..."
                 tools:ignore="HardcodedText" />
             <TextView
                 android:id="@+id/meaning_tv4"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="Drag the image and drop it here..."
                 tools:ignore="HardcodedText" />
             <TextView
                 android:id="@+id/meaning_tv5"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:text="Drag the image and drop it here..."
                 tools:ignore="HardcodedText" />
 
         </GridLayout>
