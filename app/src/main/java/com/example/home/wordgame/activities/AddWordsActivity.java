@@ -104,11 +104,6 @@ public class AddWordsActivity extends AppCompatActivity {
         if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
             EditText meaning = (EditText) findViewById(meaningId);
             new ExecuteTask(meaning, false).execute(word.getText().toString());
-            // Perform action on key press
-            Toast t = Toast.makeText(AddWordsActivity.this, "Word added successfully !", Toast.LENGTH_SHORT);
-            t.show();
-
-
         }
 
     }
