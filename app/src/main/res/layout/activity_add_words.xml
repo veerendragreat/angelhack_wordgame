@@ -55,6 +55,8 @@
             android:layout_height="wrap_content"
             android:columnCount="1"
             android:ems="10"
+            android:enabled="false"
+            android:textColor="#000"
             android:gravity="fill"
             android:hint="@string/enter_meaning"
             android:inputType="textPersonName"
@@ -80,6 +82,8 @@
             android:columnCount="1"
             android:ems="10"
             android:gravity="fill"
+            android:enabled="false"
+            android:textColor="#000"
             android:hint="@string/enter_meaning"
             android:inputType="textPersonName"
             android:rowCount="1" />
@@ -105,6 +109,8 @@
             android:ems="10"
             android:gravity="fill"
             android:hint="@string/enter_meaning"
+            android:enabled="false"
+            android:textColor="#000"
             android:inputType="textPersonName"
             android:rowCount="1" />
 
@@ -127,6 +133,8 @@
             android:layout_height="wrap_content"
             android:columnCount="1"
             android:ems="10"
+            android:enabled="false"
+            android:textColor="#000"
             android:gravity="fill"
             android:hint="@string/enter_meaning"
             android:inputType="textPersonName"
@@ -153,6 +161,8 @@
             android:ems="10"
             android:gravity="fill"
             android:hint="@string/enter_meaning"
+            android:enabled="false"
+            android:textColor="#000"
             android:inputType="textPersonName"
             android:rowCount="1" />
 
